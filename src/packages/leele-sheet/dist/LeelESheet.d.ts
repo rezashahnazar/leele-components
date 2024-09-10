@@ -17,14 +17,18 @@ export interface LeelESheetProps {
     onRelease?: (event: React.PointerEvent<HTMLDivElement>, open: boolean) => void;
     /** Callback fired when closed */
     onClose?: () => void;
-    /** Additional CSS classes */
+    /** Additional CSS classes for content */
     className?: string;
+    /** Additional CSS classes for the overlay */
+    overlayClassName?: string;
+    /** Whether to show the overlay */
+    showOverlay?: boolean;
 }
 /**
  * A customizable drawer component that displays content in a sheet-like interface.
  * @param props - The props for the LeelESheet component
  */
-export default function LeelESheet({ snapPoints, defaultSnapPoint, ...props }: LeelESheetProps): JSX.Element;
+export default function LeelESheet({ snapPoints, defaultSnapPoint, showOverlay, ...props }: LeelESheetProps): JSX.Element;
 /**
  * Developer Guide:
  *

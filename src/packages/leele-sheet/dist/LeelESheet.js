@@ -56,12 +56,12 @@ var utils_1 = require("./utils");
  * @param props - The props for the LeelESheet component
  */
 function LeelESheet(_a) {
-    var _b = _a.snapPoints, snapPoints = _b === void 0 ? ["300px", 0.85] : _b, _c = _a.defaultSnapPoint, defaultSnapPoint = _c === void 0 ? "300px" : _c, props = __rest(_a, ["snapPoints", "defaultSnapPoint"]);
+    var _b = _a.snapPoints, snapPoints = _b === void 0 ? ["300px", 0.85] : _b, _c = _a.defaultSnapPoint, defaultSnapPoint = _c === void 0 ? "300px" : _c, _d = _a.showOverlay, showOverlay = _d === void 0 ? true : _d, props = __rest(_a, ["snapPoints", "defaultSnapPoint", "showOverlay"]);
     // State to manage the current snap point
-    var _d = (0, react_1.useState)(defaultSnapPoint), snap = _d[0], setSnap = _d[1];
+    var _e = (0, react_1.useState)(defaultSnapPoint), snap = _e[0], setSnap = _e[1];
     return (react_1.default.createElement(vaul_1.Drawer.Root, __assign({ snapPoints: snapPoints, activeSnapPoint: snap, setActiveSnapPoint: setSnap, shouldScaleBackground: true, open: true, dismissible: false, onDrag: props.onDrag, onRelease: props.onRelease, onClose: props.onClose }, props),
         react_1.default.createElement(vaul_1.Drawer.Trigger, { asChild: true }, props.triggerElement),
-        react_1.default.createElement(vaul_1.Drawer.Overlay, { className: "fixed inset-0 bg-black/40" }),
+        showOverlay && (react_1.default.createElement(vaul_1.Drawer.Overlay, { className: (0, utils_1.cn)("fixed inset-0 bg-black/40", props.overlayClassName) })),
         react_1.default.createElement(vaul_1.Drawer.Portal, null,
             react_1.default.createElement(vaul_1.Drawer.Content, { "aria-describedby": undefined, className: (0, utils_1.cn)("fixed flex flex-col bg-muted border border-gray-200 border-b-none rounded-6xl shadow-[0_4px_20px_rgba(0,0,0,0.1)] bottom-0 left-0 right-0 h-full", props.className) },
                 react_1.default.createElement(react_dialog_1.DialogTitle, { className: "sr-only" }, props.contentSrTitle),
