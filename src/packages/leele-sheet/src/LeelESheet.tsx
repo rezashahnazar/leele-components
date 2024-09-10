@@ -29,8 +29,12 @@ export interface LeelESheetProps {
   ) => void;
   /** Callback fired when closed */
   onClose?: () => void;
-  /** Additional CSS classes */
+  /** Additional CSS classes for content */
   className?: string;
+  /** Additional CSS classes for the overlay */
+  overlayClassName?: string;
+  /** Whether to show the overlay */
+  showOverlay?: boolean;
 }
 
 /**
@@ -40,6 +44,7 @@ export interface LeelESheetProps {
 export default function LeelESheet({
   snapPoints = ["300px", 0.85],
   defaultSnapPoint = "300px",
+  showOverlay = true,
   ...props
 }: LeelESheetProps): JSX.Element {
   // State to manage the current snap point
@@ -64,7 +69,11 @@ export default function LeelESheet({
       <Drawer.Trigger asChild>{props.triggerElement}</Drawer.Trigger>
 
       {/* Overlay background */}
-      <Drawer.Overlay className="fixed inset-0 bg-black/40" />
+      {showOverlay && (
+        <Drawer.Overlay
+          className={cn("fixed inset-0 bg-black/40", props.overlayClassName)}
+        />
+      )}
 
       <Drawer.Portal>
         {/* Main content of the sheet */}

@@ -10,6 +10,7 @@ LeelE Sheet is a customizable snappable bottom sheet component for React applica
 - Snap points for precise control of sheet height
 - Accessible by default with screen reader support
 - Smooth animations and transitions
+- Configurable overlay visibility and styling
 
 ## Installation
 
@@ -32,6 +33,8 @@ function App() {
       contentSrTitle="Sheet Title"
       snapPoints={["300px", "50%", "80%"]}
       defaultSnapPoint="300px"
+      showOverlay={true}
+      overlayClassName="bg-black/50"
     />
   );
 }
@@ -67,12 +70,16 @@ export interface LeelESheetProps {
   onClose?: () => void;
   /** Additional CSS classes */
   className?: string;
+  /** Whether to show the overlay (default: true) **/
+  showOverlay?: boolean;
+  /** Additional CSS classes for the overlay **/
+  overlayClassName?: string;
 }
 ```
 
 ## Customization
 
-LeelE Sheet is built with Tailwind CSS, making it easy to customize. You can override the default styles by passing your own classes through the `className` prop.
+LeelE Sheet is built with Tailwind CSS, making it easy to customize. You can override the default styles by passing your own classes through the `className` prop. The overlay can be customized using the `overlayClassName` prop or hidden entirely with `showOverlay={false}`.
 
 ## TypeScript
 
@@ -89,6 +96,10 @@ This package is designed to work seamlessly with Tailwind CSS. Make sure you hav
 ## Accessibility
 
 LeelE Sheet is built with accessibility in mind. It includes proper ARIA attributes and supports screen readers out of the box.
+
+## Changelog
+
+For a detailed list of changes and version history, please refer to the [CHANGELOG.md](./CHANGELOG.md) file.
 
 ## License
 
