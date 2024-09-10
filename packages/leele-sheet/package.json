@@ -28,5 +28,5 @@
     "typescript": "^5",
     "@types/react": "^18.3.3"
   },
-  "license": "ISC"
+  "license": "MIT"
 }
