@@ -3,25 +3,22 @@ import type { Viewport, Metadata } from "next";
 import { cn } from "@/lib/utils";
 import { IRANYekan } from "../fonts/local-fonts";
 import dynamic from "next/dynamic";
-const SimpleTrackX = dynamic(() => import("@/simpleTrackX/SimpleTrackX"), {
-  ssr: false,
-});
 const ThemeProvider = dynamic(
   () => import("@/components/layout/ThemeProvider"),
   { ssr: false }
 );
 
 const METADATA_CONSTS = {
-  title: "دیجی‌کالا",
+  title: "LeelE Components",
   description:
-    "هر آنچه که نیاز دارید با بهترین قیمت از دیجی‌کالا بخرید! جدیدترین انواع گوشی موبایل، لپ تاپ، لباس، لوازم آرایشی و بهداشتی، کتاب، لوازم خانگی، خودرو و... با امکان تعویض و مرجوعی آسان | ✓ارسال رايگان ✓پرداخت در محل ✓ضمانت بازگشت کالا - برای خرید کلیک کنید!",
+    "LeelE Components is a collection of reusable UI components for building modern and responsive web applications.",
   domain:
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : "https://about.digikala.com",
+      : "https://reza.tips",
   basePath: "/template/",
   toBeIndexed: false,
-  siteName: "دیجی‌کالا",
+  siteName: "LeelE Components",
   locale: "fa_IR",
   type: "website",
 };
@@ -77,7 +74,6 @@ export default function RootLayout({
           "relative min-size-full antialiased"
         )}
       >
-        <SimpleTrackX />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
