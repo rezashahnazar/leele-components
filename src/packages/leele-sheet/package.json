@@ -6,11 +6,23 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rezashahnazar/leele-sheet.git"
+  },
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "bottom-sheet",
+    "snappable",
+    "vaul",
+    "radix-ui",
+    "tailwind-css",
+    "typescript"
+  ],
   "author": "rezashahnazar",
   "description": "A customizable snappable bottom sheet component for React",
   "peerDependencies": {

@@ -204,6 +204,10 @@ LeelE Sheet is built with accessibility in mind. It includes proper ARIA attribu
 
 For a detailed list of changes and version history, please refer to the [CHANGELOG.md](./CHANGELOG.md) file.
 
+## Contributing
+
+We welcome contributions to LeelE Sheet! If you have suggestions or improvements, please open an issue on [GitHub](https://github.com/rezashahnazar/leele-components/issues) or submit a pull request.
+
 ## Support
 
 If you need help or want to report an issue, please email me at reza.shahnazar@gmail.com.
