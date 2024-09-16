@@ -19,6 +19,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"]
+      // "@/packages/leele-yes-no-qa": ["./src/packages/leele-yes-no-qa/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

@@ -10,7 +10,7 @@ const nextConfig = {
       },
     ];
   },
-  basePath: "/template",
+  basePath: "/components",
   trailingSlash: true,
   env: {
     DIGIKALA_TOKEN_COOKIE_KEY: "Digikala:User:Token:new",
