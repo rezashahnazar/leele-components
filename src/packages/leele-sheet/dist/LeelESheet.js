@@ -56,30 +56,37 @@ var utils_1 = require("./utils");
  * @param props - The props for the LeelESheet component
  */
 function LeelESheet(_a) {
-    var _b = _a.snapPoints, snapPoints = _b === void 0 ? ["300px", 0.85] : _b, _c = _a.defaultSnapPoint, defaultSnapPoint = _c === void 0 ? "300px" : _c, _d = _a.showOverlay, showOverlay = _d === void 0 ? true : _d, props = __rest(_a, ["snapPoints", "defaultSnapPoint", "showOverlay"]);
+    var _b = _a.nested, nested = _b === void 0 ? false : _b, _c = _a.snapPoints, snapPoints = _c === void 0 ? !nested ? ["400px", 0.85] : ["150px", "300px"] : _c, _d = _a.defaultSnapPoint, defaultSnapPoint = _d === void 0 ? !nested ? "400px" : "150px" : _d, contentElement = _a.contentElement, open = _a.open, _e = _a.triggerElement, triggerElement = _e === void 0 ? (react_1.default.createElement("button", { className: (0, utils_1.cn)("bg-blue-500 text-white px-4 py-2 rounded-lg", "hover:bg-blue-500/10 hover:text-blue-500", "transition-all duration-300") }, nested ? "Toggle Nested Sheet Open/Close" : "Toggle Sheet Open/Close")) : _e, _f = _a.overlayClassName, overlayClassName = _f === void 0 ? "bg-black/40" : _f, _g = _a.alwaysOpen, alwaysOpen = _g === void 0 ? undefined : _g, _h = _a.showOverlay, showOverlay = _h === void 0 ? !nested ? true : false : _h, _j = _a.activePageInteractions, activePageInteractions = _j === void 0 ? true : _j, _k = _a.preventScrollRestoration, preventScrollRestoration = _k === void 0 ? true : _k, _l = _a.disablePreventScroll, disablePreventScroll = _l === void 0 ? false : _l, children = _a.children, props = __rest(_a, ["nested", "snapPoints", "defaultSnapPoint", "contentElement", "open", "triggerElement", "overlayClassName", "alwaysOpen", "showOverlay", "activePageInteractions", "preventScrollRestoration", "disablePreventScroll", "children"]);
     // State to manage the current snap point
-    var _e = (0, react_1.useState)(defaultSnapPoint), snap = _e[0], setSnap = _e[1];
-    return (react_1.default.createElement(vaul_1.Drawer.Root, __assign({ snapPoints: snapPoints, activeSnapPoint: snap, setActiveSnapPoint: setSnap, shouldScaleBackground: true, open: true, dismissible: false, onDrag: props.onDrag, onRelease: props.onRelease, onClose: props.onClose }, props),
-        react_1.default.createElement(vaul_1.Drawer.Trigger, { asChild: true }, props.triggerElement),
-        showOverlay && (react_1.default.createElement(vaul_1.Drawer.Overlay, { className: (0, utils_1.cn)("fixed inset-0 bg-black/40", props.overlayClassName) })),
+    var _m = (0, react_1.useState)(defaultSnapPoint), snap = _m[0], setSnap = _m[1];
+    return (react_1.default.createElement(vaul_1.Drawer.Root, __assign({ snapPoints: snapPoints, activeSnapPoint: snap, setActiveSnapPoint: setSnap, shouldScaleBackground: !nested, open: alwaysOpen ? true : open, onOpenChange: function () { }, dismissible: alwaysOpen ? false : true, onDrag: props.onDrag, onRelease: props.onRelease, onClose: props.onClose, modal: !activePageInteractions, fixed: alwaysOpen ? true : false, direction: "bottom", preventScrollRestoration: preventScrollRestoration, disablePreventScroll: disablePreventScroll, nested: nested }, props),
+        !alwaysOpen && react_1.default.createElement(vaul_1.Drawer.Trigger, { asChild: true }, triggerElement),
+        showOverlay && (react_1.default.createElement(vaul_1.Drawer.Overlay, { className: (0, utils_1.cn)("fixed inset-0 bg-black/40", overlayClassName) })),
         react_1.default.createElement(vaul_1.Drawer.Portal, null,
-            react_1.default.createElement(vaul_1.Drawer.Content, { "aria-describedby": undefined, className: (0, utils_1.cn)("fixed flex flex-col bg-muted border border-gray-200 border-b-none rounded-6xl shadow-[0_4px_20px_rgba(0,0,0,0.1)] bottom-0 left-0 right-0 h-full", props.className) },
+            react_1.default.createElement(vaul_1.Drawer.Content, { "aria-describedby": undefined, className: (0, utils_1.cn)("fixed flex flex-col border border-gray-200 border-b-none rounded-3xl", " p-8 shadow-[0_4px_20px_rgba(0,0,0,0.1)]  h-full", {
+                    "bg-white bottom-0 left-8 right-8": nested,
+                    "bg-muted bottom-0 left-0 right-0": !nested,
+                }, props.className) },
                 react_1.default.createElement(react_dialog_1.DialogTitle, { className: "sr-only" }, props.contentSrTitle),
-                props.contentElement))));
+                children,
+                contentElement))));
 }
 /**
  * Developer Guide:
  *
- * 1. The LeelESheet component is built on top of vault and radix-ui libraries.
- * 2. It provides a flexible way to create bottom sheets with customizable snap points.
+ * 1. The LeelESheet component is built on top of vaul and radix-ui libraries.
+ * 2. It provides a flexible way to create bottom sheets with customizable behavior.
  * 3. The 'triggerElement' prop should be used to provide a button or any interactive element to open the sheet.
  * 4. The 'contentElement' prop is where you should pass the main content of your sheet.
- * 5. Use 'snapPoints' to define the heights at which the sheet can snap. You can use pixel values or percentages.
- * 6. The 'defaultSnapPoint' sets the initial height of the sheet when opened.
+ * 5. The 'alwaysOpen' prop determines if the sheet is always visible or can be dismissed.
+ * 6. The 'nested' prop should be set to true if this sheet is rendered inside another sheet.
  * 7. Callback props (onDrag, onRelease, onClose) can be used to add custom behaviors at different stages of interaction.
  * 8. The component is accessible by default, with screen reader support through the 'contentSrTitle' prop.
  * 9. Additional styling can be applied using the 'className' prop or by modifying the existing Tailwind classes.
+ * 10. The 'showOverlay' prop controls the visibility of the background overlay.
+ * 11. Use 'activePageInteractions' to determine if the sheet should be modal or allow interactions with the page behind it.
+ * 12. 'preventScrollRestoration' and 'disablePreventScroll' can be used to fine-tune scrolling behavior.
  *
- * Note: This component is set to always be open and non-dismissible by default. If you need to control the open state,
- * you should implement that logic in the parent component and pass it down as a prop.
+ * Note: The open state and dismissibility of the sheet are controlled by the 'alwaysOpen' prop. Set it to false if you want
+ * the sheet to be dismissible and controlled by the trigger element.
  */
