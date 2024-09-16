@@ -1,4 +1,4 @@
-import { handleQAChat } from "@/packages/leele-yes-no-qa/src";
+import { handleQAChat } from "@/packages/leele-ai/src";
 
 export async function POST(req: Request) {
   const prompt =
