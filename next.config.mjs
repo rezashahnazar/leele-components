@@ -10,7 +10,7 @@ const nextConfig = {
       },
     ];
   },
-  basePath: "/components",
+  basePath: "/leele",
   trailingSlash: true,
   env: {
     DIGIKALA_TOKEN_COOKIE_KEY: "Digikala:User:Token:new",

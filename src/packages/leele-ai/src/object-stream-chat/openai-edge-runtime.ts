@@ -5,7 +5,6 @@ import { createOpenAI } from "@ai-sdk/openai";
 export const runtime = "edge";
 export const maxDuration = 30;
 
-// Define schemas and types
 const messageSchema = z.object({
   id: z
     .string()
@@ -29,7 +28,6 @@ const conversationSchema = z.object({
 export type Message = z.infer<typeof messageSchema>;
 export type Conversation = z.infer<typeof conversationSchema>;
 
-// Create OpenAI instance
 const openai = createOpenAI({
   apiKey: process.env.OPENAI_API_KEY,
   baseURL: process.env.OPENAI_API_BASE,

@@ -30,7 +30,7 @@ export const QAStreamCard: React.FC<QAStreamCardProps> = ({
       AI: {message.aiAnswer}
     </p>
     <p className="text-sm text-gray-500 mt-2">
-      {new Date(message.datetime).toLocaleString()}
+      {new Date(message?.datetime || "").toLocaleString()}
     </p>
     {message.isConsideredInappropriate && (
       <p className="text-sm text-yellow-500 mt-2">

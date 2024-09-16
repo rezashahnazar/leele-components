@@ -1,18 +1,28 @@
 {
-  "name": "leele-yes-no-qa",
-  "version": "0.0.1",
+  "name": "leele-ai",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rezashahnazar/leele-components.git"
+  },
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "ai",
+    "chatbot",
+    "tailwind-css",
+    "typescript"
+  ],
   "author": "rezashahnazar",
-  "description": "A customizable snappable bottom sheet component for React",
+  "description": "An easy to use AI Product Toolkit for React, including UI Components, Hooks, and Runtime utils.",
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0"

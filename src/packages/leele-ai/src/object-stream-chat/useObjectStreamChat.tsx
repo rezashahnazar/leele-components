@@ -20,13 +20,13 @@ interface ChatHookOptions {
 
 interface ChatHookResult {
   messages: Message[];
-  filteredMessages: Message[]; // Add this line
+  filteredMessages: Message[];
   isLoading: boolean;
   error: Error | null;
   sendMessage: (userMessage: string) => void;
 }
 
-export function useObjectStreamingChat({
+export function useObjectStreamChat({
   apiRoute,
   onError,
   onFinish,
